@@ -31,6 +31,7 @@
  #define TF2_TIME_H
 
 #include <chrono>
+#include <cmath>
 #include <stdio.h>
 #include <string>
 #include <thread>
@@ -46,6 +47,24 @@ namespace tf2
   using IDuration = std::chrono::duration<int, std::nano>;
   // This is the zero time in ROS
   static const TimePoint TimePointZero = TimePoint(IDuration::zero());
+
+  inline Duration durationFromSec(double t)
+  {
+    uint32_t sec, nsec;
+    sec = (uint32_t)floor(t);
+    nsec = (uint32_t)std::round((t-sec) * 1e9);
+    // avoid rounding errors
+    sec += (nsec / 1000000000ul);
+    nsec %= 1000000000ul;
+    return std::chrono::seconds(sec) + std::chrono::nanoseconds(nsec);
+  }
+
+  /*
+  inline TimePoint timeFromSec(double t)
+  {
+    return std::chrono::system_clock::now() + durationFromSec(t);
+  }
+  */
 
   inline TimePoint get_now()
   {

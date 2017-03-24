@@ -31,9 +31,6 @@
 #include <gtest/gtest.h>
 #include <tf2/convert.h>
 
-static const double EPS = 1e-3;
-
-
 TEST(TfEigen, ConvertVector)
 {
   Eigen::Vector3d v(1,2,3);

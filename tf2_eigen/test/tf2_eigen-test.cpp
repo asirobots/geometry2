@@ -52,6 +52,5 @@ TEST(TfEigen, ConvertVector)
 int main(int argc, char **argv){
   testing::InitGoogleTest(&argc, argv);
 
-  bool ret = RUN_ALL_TESTS();
-  return ret;
+  return RUN_ALL_TESTS();
 }

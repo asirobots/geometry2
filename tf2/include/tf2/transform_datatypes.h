@@ -43,7 +43,6 @@ namespace tf2
 template <typename T>
 class Stamped : public T{
  public:
-  typedef std::chrono::system_clock::time_point TimePoint;
   TimePoint stamp_; ///< The timestamp associated with this data
   std::string frame_id_; ///< The frame_id associated this data
 
